@@ -1,0 +1,64 @@
+.footer {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f8f8;
+    
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      
+      .footer-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch; // đường dọc cùng chiều cao
+        width: 100%;
+        max-width: 1200px;
+        padding: 20px 0;
+        border-bottom: 1px solid #ddd;
+  
+        .bottom {
+          flex: 1;
+          padding: 0 50px;
+          text-align: left;
+  
+          h3 {
+            margin-bottom: 15px;
+            font-weight: 700;
+          }
+  
+          a {
+            display: block;
+            color: #000;
+            margin-bottom: 8px;
+            text-decoration: none;
+            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+  
+            &:hover {
+              text-decoration: none;
+              color: aqua;
+              transition: all 0.5s;
+            }
+          }
+        }
+  
+        .vertical-divider {
+          width: 1px;
+          background-color: gray;
+          height: auto; //phụ thuộc chiều cao nội dung
+          align-self: stretch;
+          margin: 0 20px;
+        }
+      }
+      
+      .footer-bottom {
+        width: 100%;
+        background-color: #dedddc;
+        padding: 20px 0;
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+  }
+  

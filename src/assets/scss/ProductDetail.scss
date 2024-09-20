@@ -1,0 +1,44 @@
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .card-img-top {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+
+        .card-title {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .heart-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #ff0022;
+
+            &:hover {
+                color: #333399;
+            }
+        }
+    }
+}
