@@ -1,0 +1,16 @@
+.profile-header {
+  background: linear-gradient(90deg, #8a2387, #e94057, #f27121);
+}
+
+.profile-pic {
+  border: 3px solid #ddd;
+}
+
+.order-section {
+  margin-bottom: 20px;
+}
+
+.order-date {
+  font-weight: bold;
+  margin-bottom: 10px;
+}/*# sourceMappingURL=Profile.css.map */

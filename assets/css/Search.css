@@ -1,0 +1,41 @@
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.product-card img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.product-card .card-body {
+  padding: 15px;
+}
+.product-card .card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.product-card .card-text {
+  font-size: 1rem;
+  color: #666;
+}
+.product-card .btn {
+  margin-right: 10px;
+}
+.product-card .price {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.search-results {
+  background: linear-gradient(to right, #ff00cc, #333399);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=Search.css.map */

@@ -1,0 +1,91 @@
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.carousel {
+  margin-top: 10px;
+}
+.carousel .carousel-inner .carousel-item {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.carousel .carousel-inner .carousel-item.active {
+  display: flex;
+}
+.carousel .carousel-inner .carousel-item .carousel-content {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  width: 85%;
+}
+.carousel .carousel-inner .carousel-item .carousel-content .carousel-img {
+  flex: 2;
+  height: auto;
+  max-height: 550px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 20px;
+  padding-right: 20px;
+}
+.carousel .carousel-inner .carousel-item .carousel-content .carousel-text {
+  flex: 1;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.carousel .carousel-inner .carousel-item .carousel-content .carousel-text h5 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+.carousel .carousel-inner .carousel-item .carousel-content .carousel-text p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  padding-right: 20px;
+  text-align: left;
+}
+.carousel .carousel-inner .carousel-item .carousel-content .carousel-text .btn-warning {
+  background-color: #ffcc00;
+  border: none;
+  color: white;
+  width: 140px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.carousel .carousel-control-prev,
+.carousel .carousel-control-next {
+  width: 5%;
+  border-radius: 50%;
+  border: none;
+}
+.carousel .carousel-control-prev .carousel-control-prev-icon,
+.carousel .carousel-control-prev .carousel-control-next-icon,
+.carousel .carousel-control-next .carousel-control-prev-icon,
+.carousel .carousel-control-next .carousel-control-next-icon {
+  background-color: rgb(193, 190, 190);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.carousel .carousel-control-prev {
+  left: 10px;
+}
+.carousel .carousel-control-next {
+  right: 10px;
+}
+
+.product-feature .feature-title {
+  background: linear-gradient(to right, #ff00cc, #333399);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=Home.css.map */
