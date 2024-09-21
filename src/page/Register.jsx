@@ -13,34 +13,37 @@ const Register = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
-      passwordConfirm: '',
-      name: '',
-      phone: '',
-      gender: ''
+      "email": "",
+      "password": "",
+      "name": "",
+      "gender": true, // Giá trị mặc định là true
+      "phone": ""
     },
     validationSchema: Yup.object({
-      email: Yup.string().email('Invalid email address').required('Required'),
-      password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
+      email: Yup.string().email('Địa chỉ email không hợp lệ').required('required'),
+      password: Yup.string().min(6, 'Mật khẩu phải ít nhất 6 ký tự').required('required'),
       passwordConfirm: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
-        .required('Required'),
-      name: Yup.string().required('Required'),
-      phone: Yup.string().required('Required'),
-      gender: Yup.string().required('Required')
+        .oneOf([Yup.ref('password'), null], 'Mật khẩu không khớp')
+        .required('required'),
+      name: Yup.string().required('required'),
+      phone: Yup.string().required('required'),
+      gender: Yup.boolean().required('required')
     }),
     onSubmit: async (values) => {
-      const result = await dispatch(registerActionAsync(values));
+      const { passwordConfirm, ...registerData } = values; // Bỏ qua passwordConfirm
+      const result = await dispatch(registerActionAsync(registerData));
       if (result) {
         message.success('Đăng ký thành công. Vui lòng đăng nhập.');
-        navigate('/login');
+        navigate('/login', { state: { user: result } });
       } else {
         message.error('Đăng ký thất bại, vui lòng thử lại.');
       }
-    }    
-    
+    }
   });
+
+  const handleGenderChange = (e) => {
+    formik.setFieldValue('gender', e.target.value === 'male');
+  };
 
   return (
     <div className="container mt-5">
@@ -60,9 +63,9 @@ const Register = () => {
                   value={formik.values.email}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.email && formik.errors.email ? (
+                {formik.touched.email && formik.errors.email && (
                   <div className="text-danger">{formik.errors.email}</div>
-                ) : null}
+                )}
               </div>
               <div className="form-group mb-3">
                 <label htmlFor="password">Password</label>
@@ -73,7 +76,8 @@ const Register = () => {
                   name="password"
                   onChange={formik.handleChange}
                   value={formik.values.password}
-                  onBlur={formik.handleBlur}
+                  required
+                  autoComplete="new-password"
                 />
                 {formik.touched.password && formik.errors.password ? (
                   <div className="text-danger">{formik.errors.password}</div>
@@ -87,12 +91,7 @@ const Register = () => {
                   id="passwordConfirm"
                   name="passwordConfirm"
                   onChange={formik.handleChange}
-                  value={formik.values.passwordConfirm}
-                  onBlur={formik.handleBlur}
                 />
-                {formik.touched.passwordConfirm && formik.errors.passwordConfirm ? (
-                  <div className="text-danger">{formik.errors.passwordConfirm}</div>
-                ) : null}
               </div>
             </div>
             <div className="col-md-6">
@@ -133,8 +132,8 @@ const Register = () => {
                     type="radio"
                     name="gender"
                     value="male"
-                    onChange={formik.handleChange}
-                    checked={formik.values.gender === 'male'}
+                    onChange={handleGenderChange}
+                    checked={formik.values.gender === true}
                   /> Male
                 </label>
                 <label className="form-check-label ms-3">
@@ -143,8 +142,8 @@ const Register = () => {
                     type="radio"
                     name="gender"
                     value="female"
-                    onChange={formik.handleChange}
-                    checked={formik.values.gender === 'female'}
+                    onChange={handleGenderChange}
+                    checked={formik.values.gender === false}
                   /> Female
                 </label>
                 {formik.touched.gender && formik.errors.gender ? (
