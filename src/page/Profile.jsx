@@ -1,35 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Input, Form, Tabs, Table } from 'antd';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import '../assets/scss/Profile.scss';
 import UpdateAvatar from '../Profile/UpdateAvatar';
-import axios from 'axios';
+import { getProfileActionAsync } from '../Redux/reducers/userReducer';
 
 const { TabPane } = Tabs;
 
 const Profile = () => {
-  const [profile, setProfile] = useState({});
+  const dispatch = useDispatch();
+  const profile = useSelector(state => state.userReducer.profile);
   const orderHistory = useSelector(state => state.userReducer.orderHistory);
 
-  const getProfileApi = async () => {
-    try {
-      const res = await axios({
-        url: "https://apistore.cybersoft.edu.vn/api/Users/getProfile",
-        method: "POST",
-        headers: {
-          Authorization: localStorage.getItem("TOKEN"),
-        },
-      });
-
-      setProfile(res.data.content);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
-    getProfileApi();
-  }, []);
+    dispatch(getProfileActionAsync());
+  }, [dispatch]);
 
   const columns = [
     {
@@ -72,7 +57,6 @@ const Profile = () => {
     quantity: order.quantity,
   }));
 
-
   return (
     <div className="container mt-5">
       <div className="row">
@@ -93,22 +77,22 @@ const Profile = () => {
             <div className="row">
               <div className="col-md-6">
                 <Form.Item label="Email">
-                  <Input value={profile.email} />
+                  <Input value={profile?.email} readOnly />
                 </Form.Item>
               </div>
               <div className="col-md-6">
                 <Form.Item label="Name">
-                  <Input value={profile.name} />
+                  <Input value={profile?.name} readOnly />
                 </Form.Item>
               </div>
               <div className="col-md-6">
                 <Form.Item label="Phone">
-                  <Input value={profile.phone} />
+                  <Input value={profile?.phone} readOnly />
                 </Form.Item>
               </div>
               <div className="col-md-6">
                 <Form.Item label="Password">
-                  <Input.Password value={profile.password} />
+                  <Input.Password value={profile?.password} readOnly />
                 </Form.Item>
               </div>
             </div>
@@ -133,7 +117,6 @@ const Profile = () => {
             </div>
           </TabPane>
         </Tabs>
-
       </div>
     </div>
   );

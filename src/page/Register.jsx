@@ -16,7 +16,7 @@ const Register = () => {
       "email": "",
       "password": "",
       "name": "",
-      "gender": true, // Giá trị mặc định là true
+      "gender": true, 
       "phone": ""
     },
     validationSchema: Yup.object({
@@ -30,7 +30,7 @@ const Register = () => {
       gender: Yup.boolean().required('required')
     }),
     onSubmit: async (values) => {
-      const { passwordConfirm, ...registerData } = values; // Bỏ qua passwordConfirm
+      const { passwordConfirm, ...registerData } = values;
       const result = await dispatch(registerActionAsync(registerData));
       if (result) {
         message.success('Đăng ký thành công. Vui lòng đăng nhập.');
