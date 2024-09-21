@@ -10,6 +10,7 @@ const HeaderMenu = () => {
   const cart = useSelector(state => state.cartSliceReducer.cart);
   const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
   const userLogin = useSelector(state => state.userReducer.userLogin);
+  const profile = useSelector(state => state.userReducer.profile);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -43,7 +44,7 @@ const HeaderMenu = () => {
           </Link>
           {userLogin ? (
             <>
-              <span className='text-white mx-1'>{userLogin.email}</span>
+              <span className='text-white mx-1'>{profile.name}</span>
               <Link to="/profile" className="mx-1">Profile</Link>
               <Link onClick={handleLogout}>Logout</Link>
             </>
